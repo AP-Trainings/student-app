@@ -1,5 +1,8 @@
 package com.school.entity;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,5 +39,22 @@ public class Student {
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="STUDENT_DETAIL_ID")
 	private StudentDetail studentDetail;
+	
+	@ManyToMany(cascade=CascadeType.ALL)
+	@JoinTable(
+			name="STUDENT_CLASS",
+			joinColumns = {@JoinColumn(name="STUDENT_ID")},
+			inverseJoinColumns = {@JoinColumn(name="CLASS_ID")}
+			)
+	private Set<Class> classSet;
+	
+	@OneToMany(mappedBy="student")
+	private List<StudentMark> studentMarkList;
+	
+	public Student(String firstName, String lastName, StudentDetail studentDetail) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.studentDetail = studentDetail;
+	}
 	
 }
