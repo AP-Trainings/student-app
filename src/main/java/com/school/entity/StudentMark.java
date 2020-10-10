@@ -13,11 +13,12 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name="STUDENT_MARK")
 @NoArgsConstructor
-@Getter @Setter
+@Getter @Setter @ToString
 public class StudentMark {
 	
 	@Id
