@@ -16,12 +16,12 @@ import com.school.helper.SchoolRestResponse;
 import com.school.service.StudentService;
 
 @RestController
-public class StudentDetailsController {
+public class StudentController {
 	
 	private StudentService studentService;
 	
 	@Autowired
-	public StudentDetailsController(StudentService studentService) {
+	public StudentController(StudentService studentService) {
 		this.studentService = studentService;
 	}
 	
