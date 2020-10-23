@@ -1,22 +1,24 @@
 package com.school.helper;
 
-import java.util.List;
+import org.springframework.http.HttpStatus;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 public class SchoolRestResponse<E> {
 	
-	private Integer statusCode;
+	private HttpStatus statusCode;
 	private String responseMessage;
-	private List<E> responsePayload;
+	private E responsePayload;
 	
 	public SchoolRestResponse() {
 	}
 
-	public SchoolRestResponse(Integer statusCode, String responseMessage, List<E> responsePayload) {
+	public SchoolRestResponse(HttpStatus statusCode, String responseMessage, E responsePayload) {
 		this.statusCode = statusCode;
 		this.responseMessage = responseMessage;
 		this.responsePayload = responsePayload;
